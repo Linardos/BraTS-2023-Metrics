@@ -52,24 +52,24 @@ def get_TissueWiseSeg(prediction_matrix, gt_matrix, tissue_type):
     """
 
     if tissue_type == 'WT':
-        np.place(prediction_matrix, (prediction_matrix != 1) & (prediction_matrix != 2) & (prediction_matrix != 3), 0)
+        np.place(prediction_matrix, (prediction_matrix != 1) & (prediction_matrix != 2) & (prediction_matrix != 4), 0)
         np.place(prediction_matrix, (prediction_matrix > 0), 1)
         
-        np.place(gt_matrix, (gt_matrix != 1) & (gt_matrix != 2) & (gt_matrix != 3), 0)
+        np.place(gt_matrix, (gt_matrix != 1) & (gt_matrix != 2) & (gt_matrix != 4), 0)
         np.place(gt_matrix, (gt_matrix > 0), 1)
     
     elif tissue_type == 'TC':
-        np.place(prediction_matrix, (prediction_matrix != 1)  & (prediction_matrix != 3), 0)
+        np.place(prediction_matrix, (prediction_matrix != 1)  & (prediction_matrix != 4), 0)
         np.place(prediction_matrix, (prediction_matrix > 0), 1)
         
-        np.place(gt_matrix, (gt_matrix != 1) & (gt_matrix != 3), 0)
+        np.place(gt_matrix, (gt_matrix != 1) & (gt_matrix != 4), 0)
         np.place(gt_matrix, (gt_matrix > 0), 1)
         
     elif tissue_type == 'ET':
-        np.place(prediction_matrix, (prediction_matrix != 3), 0)
+        np.place(prediction_matrix, (prediction_matrix != 4), 0)
         np.place(prediction_matrix, (prediction_matrix > 0), 1)
         
-        np.place(gt_matrix, (gt_matrix != 3), 0)
+        np.place(gt_matrix, (gt_matrix != 4), 0)
         np.place(gt_matrix, (gt_matrix > 0), 1)
     
     return prediction_matrix, gt_matrix
